@@ -1,5 +1,7 @@
 # Web CORS credentials 跨域示例
 
+这里是一个前后端分离项目，是由后端提供 RESTful API ，前端多套域名使用 Fetch CORS credentials 跨域请求后端统一接口，以来实现『单点登录』，也就是在一个网站上登录了，在对应的其他网站中即是登录状态。
+
 ## 依赖技术点
 
 - [CORS](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS)
