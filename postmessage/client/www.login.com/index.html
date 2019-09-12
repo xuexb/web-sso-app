@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>登录 - @xuexb/web-sso-app</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="//www.a.com/">
+    <img src="https://static.cdn.xuexb.com/image/logo.jpg?imageslim" width="30" height="30" class="d-inline-block align-top" alt="LOGO">
+    单点登录示例
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="//www.a.com/">首页</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/xuexb/web-sso-app">GitHub</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+  <div class="container-fluid mt-3">
+  <form method="post" autocomplete="off">
+    <div class="form-group">
+      <label for="username">用户名</label>
+      <input autofocus type="text" class="form-control" id="username" name="username" required maxlength="16" autocomplete="username">
+    </div>
+    <div class="form-group">
+      <label for="password">密码</label>
+      <input type="password" class="form-control" id="password" name="password" required maxlength="16" autocomplete="current-password">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">登录</button>
+      <span class="ml-2 text-muted">用户名和密码一样即可登录。</span>
+    </div>
+  </form>
+  </div>
+
+<footer class="mt-5">
+  <p class="text-center">
+    &copy; <a href="https://xuexb.com/">前端小武</a>
+  </p>
+</footer>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script>
+  $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+  });
+</script>
+<script>
+  $('form').on('submit', function () {
+    var username = $('#username').val().trim();
+    var password = $('#password').val().trim();
+
+    if (username !== password) {
+      return alert('用户名和密码不一致。');
+    }
+
+    $.ajax({
+      url: '//www.sso1.com/api/login',
+      type: 'post',
+      data: {
+        username: username,
+        password: password
+      },
+      success: function (res) {
+        if (res.errno === 0) {
+          // 写入 token
+          $.cookie('sso-access-token', res.data.token, {
+            path: '/',
+            secure: location.protocol === 'https:',
+            expires: 30
+          });
+          return window.location.assign('//www.a.com');
+        }
+
+        alert(res.errmsg || '登录失败');
+      },
+      error: function (err) {
+        console.error(err);
+      }
+    });
+    return false;
+  });
+</script>
+</body>
+</html>

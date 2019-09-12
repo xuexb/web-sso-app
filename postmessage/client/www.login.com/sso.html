@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>SSO Token</title>
+</head>
+<body>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+  <script>
+    window.addEventListener('message', function (res) {
+      if (!res.data || res.data.type !== 'sso') {
+        return;
+      }
+
+      if (res.data.action === 'getToken') {
+        window.parent.postMessage({
+          type: 'sso',
+          action: 'getToken',
+          data: $.cookie('sso-access-token')
+        }, '*');
+      }
+    });
+  </script>
+</body>
+</html>

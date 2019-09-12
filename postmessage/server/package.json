@@ -1,0 +1,40 @@
+{
+  "name": "credentials-demo",
+  "description": "Web CORS credentials 跨域示例",
+  "version": "1.0.0",
+  "author": "xuexb <fe.xiaowu@gmail.com>",
+  "scripts": {
+    "start": "node development.js",
+    "lint": "eslint src/",
+    "lint-fix": "eslint --fix src/"
+  },
+  "dependencies": {
+    "kcors": "^2.2.2",
+    "think-cache": "^1.1.0",
+    "think-cache-file": "^1.1.0",
+    "think-logger3": "^1.0.0",
+    "thinkjs": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.2.0",
+    "eslint-config-think": "^1.0.0",
+    "think-watcher": "^3.0.0"
+  },
+  "repository": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "readmeFilename": "README.md",
+  "thinkjs": {
+    "metadata": {
+      "name": "credentials-demo",
+      "description": "Web CORS credentials 跨域示例",
+      "author": "xuexb <fe.xiaowu@gmail.com>",
+      "babel": false
+    },
+    "projectName": "credentials",
+    "clone": false,
+    "isMultiModule": false
+  }
+}

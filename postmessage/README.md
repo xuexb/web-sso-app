@@ -61,7 +61,7 @@ docker-compose up --force-recreate
 
 怎么可能没有！这里只要有你的 Token 即可“变身”成为你。该项目只是一个示例，真正的 Token 生成逻辑、Token 验签逻辑肯定是后端大神做，这里只是走流程。
 
-当然还有 CORS Origin 白名单安全问题。
+当然还有 CORS Origin 白名单安全问题和 iframe 页面的 CSP 、postMessage Origin 白名单问题等。
 
 ### 2. 不能每个前端域名下都有自已的登录页？
 
