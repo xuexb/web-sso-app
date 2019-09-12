@@ -5,7 +5,9 @@ WORKDIR /usr/src/app
 
 
 COPY . .
-RUN yarn install --production
+
+RUN yarn install --production \
+  && yarn cache clean
 
 EXPOSE 8080
 CMD [ "node", "production.js" ]
