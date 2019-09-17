@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  node:
+    container_name: sso-node
+    image: sso-node-image
+    build: ./server
+  nginx:
+    container_name: sso-nginx
+    image: shangxian/nginx:alpine
+    ports:
+      - 80:80
+    volumes:
+      - './client:/usr/share/nginx/html'
+      - ./nginx.conf:/etc/nginx/nginx.conf

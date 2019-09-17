@@ -2,6 +2,7 @@
 
 Web SSO 单点登录研究示例：
 
+- [x] [测试浏览器是否支持 CORS credentials](./test-credentials/)
 - [x] [Web CORS credentials 跨域示例](./credentials/)
 - [x] [Web postMessage 跨域示例](./postmessage/)
 - [ ] Web Access Token 单点登录示例
