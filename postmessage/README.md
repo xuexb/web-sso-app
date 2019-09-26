@@ -44,7 +44,7 @@ git clone https://github.com/xuexb/web-sso-app.git
 cd web-sso-app/postmessage
 
 # 使用 Docker Compose 启动服务
-docker-compose up --force-recreate
+docker-compose up --force-recreate --build
 ```
 
 访问域名 www.login.com 登录成功后，访问以下域名将自动进入登录状态：
