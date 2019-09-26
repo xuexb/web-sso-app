@@ -36,7 +36,7 @@ git clone https://github.com/xuexb/web-sso-app.git
 cd web-sso-app/credentials
 
 # 使用 Docker Compose 启动服务
-docker-compose up --force-recreate
+docker-compose up --force-recreate --build
 ```
 
 访问域名以下域名登录成功后，其他域名将自动登录成功：
